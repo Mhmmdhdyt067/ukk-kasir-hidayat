@@ -2,7 +2,17 @@
 
 @section('content')
 <div class="container my-3">
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+        <h4>{{ $error }}</h4>
+        @endforeach
+    </div>
+    @endif
+
     <h2 class="text-center">Detail Penjualan {{ $penjualan->PenjualanID }}</h2>
+    <div class="separator separator-solid separator-border-2 separator-dark mb-2"></div>
     <table style="font-family: Arial, sans-serif; font-size: 18px; margin-bottom: 20px;">
         <thead>
             <tr>
@@ -20,6 +30,7 @@
             </tr>
         </thead>
     </table>
+    <div class="separator separator-solid separator-border-2 separator-dark mb-2"></div>
 
     <h4>Produk yang Terjual</h4>
     <table class="table table-bordered">
@@ -66,7 +77,7 @@
             <label>Jumlah</label>
             <input type="number" name="JumlahProduk" class="form-control" min="1" required>
         </div>
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button type="submit" class="btn btn-light-primary font-weight-bold mr-2">Tambah</button>
     </form>
 </div>
 

@@ -29,14 +29,15 @@ class DetailPenjualanController extends Controller
             'JumlahProduk' => 'required|integer|min:1',
         ]);
 
-        DB::transaction(function () use ($request, $id) {
+        try {
+            DB::beginTransaction();
+
             $produk = Produk::findOrFail($request->ProdukID);
 
             if ($produk->Stok < $request->JumlahProduk) {
-                return back()->withErrors(['msg' => 'Stok tidak mencukupi']);
+                return back()->withErrors(['msg' => 'Stok tidak mencukupi!']);
             }
 
-            // Cek apakah produk sudah ada di detail penjualan
             $detail = DetailPenjualan::where('PenjualanID', $id)
                 ->where('ProdukID', $request->ProdukID)
                 ->first();
@@ -44,11 +45,9 @@ class DetailPenjualanController extends Controller
             $subtotal = $produk->Harga * $request->JumlahProduk;
 
             if ($detail) {
-                // Jika sudah ada, update jumlah dan subtotal
                 $detail->increment('JumlahProduk', $request->JumlahProduk);
                 $detail->increment('Subtotal', $subtotal);
             } else {
-                // Jika belum ada, buat entri baru
                 DetailPenjualan::create([
                     'PenjualanID' => $id,
                     'ProdukID' => $request->ProdukID,
@@ -57,15 +56,19 @@ class DetailPenjualanController extends Controller
                 ]);
             }
 
-            // Kurangi stok produk
             $produk->decrement('Stok', $request->JumlahProduk);
 
-            // Update total harga di penjualan
             $penjualan = Penjualan::findOrFail($id);
             $penjualan->increment('TotalHarga', $subtotal);
-        });
 
-        return back()->with('success', 'Detail penjualan ditambahkan!');
+            DB::commit();
+
+            return back()->with('success', 'Produk berhasil ditambahkan ke penjualan');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return back()->withErrors(['success' => 'Terjadi kesalahan: ' . $e->getMessage()]);
+        }
     }
 
     public function destroy($id)

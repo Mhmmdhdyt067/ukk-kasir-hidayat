@@ -42,10 +42,10 @@
                             <td class="datatable-cell"><span style="width: 110px;">Rp. {{ $produk->Harga }}</span></td>
                             <td class="datatable-cell"><span style="width: 110px;">{{ $produk->Stok }}</span></td>
                             <td class="datatable-cell"><span style="width: 125px;">
-                                    <button class="btn btn-sm btn-clean btn-icon btn-edit" data-id="{{ $produk->ProdukID }}" data-nama="{{ $produk->NamaProduk }}" data-harga="{{ $produk->Harga }}" data-stok="{{ $produk->Stok }}" title="Edit">
+                                    <button class="btn btn-icon btn-outline-success btn-edit" data-id="{{ $produk->ProdukID }}" data-nama="{{ $produk->NamaProduk }}" data-harga="{{ $produk->Harga }}" data-stok="{{ $produk->Stok }}" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-clean btn-icon btn-delete" data-id="{{ $produk->ProdukID }}" data-nama="{{ $produk->NamaProduk }}" title="Delete">
+                                    <button class="btn btn-icon btn-outline-danger btn-delete" data-id="{{ $produk->ProdukID }}" data-nama="{{ $produk->NamaProduk }}" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </span>

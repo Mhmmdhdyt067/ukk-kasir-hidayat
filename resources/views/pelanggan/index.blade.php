@@ -42,10 +42,10 @@
                             <td class="datatable-cell"><span style="width: 110px;">{{ $pelanggan->Alamat }}</span></td>
                             <td class="datatable-cell"><span style="width: 110px;">{{ $pelanggan->NomorTelepon }}</span></td>
                             <td class="datatable-cell">
-                                <button class="btn btn-sm btn-clean btn-icon btn-edit" data-id="{{ $pelanggan->PelangganID }}" data-nama="{{ $pelanggan->NamaPelanggan }}" data-alamat="{{ $pelanggan->Alamat }}" data-telepon="{{ $pelanggan->NomorTelepon }}" title="Edit">
+                                <button class="btn btn-icon btn-outline-success btn-edit" data-id="{{ $pelanggan->PelangganID }}" data-nama="{{ $pelanggan->NamaPelanggan }}" data-alamat="{{ $pelanggan->Alamat }}" data-telepon="{{ $pelanggan->NomorTelepon }}" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button class="btn btn-sm btn-clean btn-icon btn-delete" data-id="{{ $pelanggan->PelangganID }}" data-nama="{{ $pelanggan->NamaPelanggan }}" title="Delete">
+                                <button class="btn btn-icon btn-outline-danger btn-delete" data-id="{{ $pelanggan->PelangganID }}" data-nama="{{ $pelanggan->NamaPelanggan }}" title="Delete">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>

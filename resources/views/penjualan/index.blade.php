@@ -81,10 +81,10 @@
                             <td class="datatable-cell"><span style="width: 110px;">Rp. {{ number_format($penjualan->TotalHarga, 0, ',', '.') }}</span></td>
                             <td class="datatable-cell"><span style="width: 170px;">
                                     <a href="{{ route('detail-penjualan.edit', $penjualan->PenjualanID) }}" class="btn btn-sm btn-primary" title="Detail">Detail</a>
-                                    <button class="btn btn-sm btn-clean btn-icon btn-edit" data-id="{{ $penjualan->PenjualanID }}" data-tanggal="{{ $penjualan->TanggalPenjualan }}" data-pelanggan="{{ $penjualan->PelangganID }}" data-total="{{ $penjualan->TotalHarga }}" title="Edit">
+                                    <button class="btn btn-icon btn-outline-success btn-edit" data-id="{{ $penjualan->PenjualanID }}" data-tanggal="{{ $penjualan->TanggalPenjualan }}" data-pelanggan="{{ $penjualan->PelangganID }}" data-total="{{ $penjualan->TotalHarga }}" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-clean btn-icon btn-delete" data-id="{{ $penjualan->PenjualanID }}" title="Delete">
+                                    <button class="btn btn-icon btn-outline-danger btn-delete" data-id="{{ $penjualan->PenjualanID }}" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </span></td>
